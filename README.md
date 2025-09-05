@@ -90,35 +90,6 @@ This database management system provides a complete foundation for an e-commerce
 - Proper foreign key relationships prevent orphaned records
 - Enumerated values for status fields
 
-## 💡 Usage Examples
-
-### Sample Queries
-
-**Get all products in a category with stock:**
-\`\`\`sql
-SELECT p.name, p.price, p.stock_quantity 
-FROM products p 
-JOIN categories c ON p.category_id = c.id 
-WHERE c.name = 'Electronics' AND p.stock_quantity > 0;
-\`\`\`
-
-**Calculate order total:**
-\`\`\`sql
-SELECT o.id, SUM(oi.quantity * oi.price) as total
-FROM orders o
-JOIN order_items oi ON o.id = oi.order_id
-WHERE o.id = 1
-GROUP BY o.id;
-\`\`\`
-
-**Get user's order history:**
-\`\`\`sql
-SELECT o.id, o.order_date, o.status, o.total_amount
-FROM orders o
-JOIN users u ON o.user_id = u.id
-WHERE u.email = 'customer@example.com'
-ORDER BY o.order_date DESC;
-\`\`\`
 
 ## 🏗️ Technical Specifications
 
@@ -146,23 +117,5 @@ ORDER BY o.order_date DESC;
 | **Supporting Tables** | 5 | addresses, payments, coupons, etc. |
 | **Total Tables** | 15 | Complete e-commerce functionality |
 
-## 🔧 Maintenance
 
-### Regular Tasks
-- Monitor index usage and performance
-- Archive old order data periodically
-- Update product stock quantities
-- Clean up expired shopping cart items
 
-### Backup Strategy
-- Daily full database backups
-- Transaction log backups every 15 minutes
-- Test restore procedures monthly
-
-## 📝 License
-
-This project is designed for educational and commercial use. Feel free to adapt and modify according to your needs.
-
----
-
-**Created with ❤️ for database learning and e-commerce development**
