@@ -395,35 +395,4 @@ CREATE INDEX idx_reviews_approved ON product_reviews(is_approved);
 CREATE INDEX idx_cart_user ON shopping_cart(user_id);
 CREATE INDEX idx_cart_added_at ON shopping_cart(added_at);
 
--- =====================================================
--- SUMMARY OF RELATIONSHIPS IMPLEMENTED
--- =====================================================
-/*
-ONE-TO-ONE RELATIONSHIPS:
-- users ↔ user_profiles (Each user has exactly one profile)
 
-ONE-TO-MANY RELATIONSHIPS:
-- users → addresses (One user can have multiple addresses)
-- users → orders (One user can place multiple orders)
-- users → payment_methods (One user can have multiple payment methods)
-- users → shopping_cart (One user can have multiple cart items)
-- categories → products (One category can contain multiple products)
-- categories → categories (Self-referencing: parent-child categories)
-- products → product_images (One product can have multiple images)
-- orders → order_items (One order can contain multiple items)
-
-MANY-TO-MANY RELATIONSHIPS:
-- users ↔ products (through shopping_cart: users can add multiple products to cart)
-- users ↔ products (through product_reviews: users can review multiple products)
-- orders ↔ products (through order_items: orders can contain multiple products)
-- users ↔ coupons (through coupon_usage: users can use multiple coupons)
-
-CONSTRAINTS IMPLEMENTED:
-- PRIMARY KEY: Every table has a primary key
-- FOREIGN KEY: All relationships properly constrained with referential integrity
-- NOT NULL: Critical fields marked as required
-- UNIQUE: Email, username, SKU, order_number, coupon_code
-- CHECK: Data validation for prices, ratings, dates, etc.
-- ENUM: Controlled vocabulary for status fields
-- DEFAULT: Sensible default values for optional fields
-*/
